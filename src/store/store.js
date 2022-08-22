@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import logger from "redux-logger";
+// import logger from "redux-logger";
 import { userReducer } from "./user";
 import { moviesReducer } from "./movies";
 import { tvSeriesReducer } from "./tv";
