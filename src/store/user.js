@@ -19,7 +19,7 @@ export const logInRequest = createAsyncThunk(
   async (data, thunkAPI) => {
     const { username, password } = data;
     try {
-      const user = await axios.post("https://tmdb-scarpati.herokuapp.com/api/auth/login", {
+      const user = await axios.post("http://localhost:3002/api/auth/login", {
         username,
         password,
       });

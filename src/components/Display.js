@@ -21,9 +21,9 @@ const Display = (props) => {
         display="flex"
         flexWrap="wrap"
         justifyContent="space-evenly"
-        p="10px"
+        // p="10px"
         mx="50px"
-        my="20px"
+        mb="20px"
       >
         {search.results.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
@@ -53,9 +53,9 @@ const Display = (props) => {
         display="flex"
         flexWrap="wrap"
         justifyContent="space-evenly"
-        p="10px"
+        // p="10px"
         mx="50px"
-        my="20px"
+        mb="20px"
       >
         {search.results.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
@@ -85,9 +85,9 @@ const Display = (props) => {
         display="flex"
         flexWrap="wrap"
         justifyContent="space-evenly"
-        p="10px"
+        // p="10px"
         mx="50px"
-        my="20px"
+        mb="20px"
       >
         {props?.movieList?.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
@@ -117,9 +117,9 @@ const Display = (props) => {
         display="flex"
         flexWrap="wrap"
         justifyContent="space-evenly"
-        p="10px"
+        // p="10px"
         mx="50px"
-        my="20px"
+        mb="20px"
       >
         {props?.tvList?.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>

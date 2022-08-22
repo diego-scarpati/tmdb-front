@@ -4,7 +4,7 @@ export const removeTv = async (data) => {
   const { type, id, tv } = data;
   try {
     const removedTvs = await axios.put(
-      `https://tmdb-scarpati.herokuapp.com/api/tvs/removeTv?id=${id}&tv=${tv}`,
+      `http://localhost:3002/api/tvs/removeTv?id=${id}&tv=${tv}`,
       data
     );
     return removedTvs;

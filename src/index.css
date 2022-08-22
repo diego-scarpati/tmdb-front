@@ -1,11 +1,3 @@
-/* :root {
-  --darkRed: #780000;
-  --red: #c1121f;
-  --beige: #fdf0d5;
-  --darkBlue: #003049;
-  --lightBlue: #669bbc;
-} */
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -24,6 +16,7 @@
   background-size: 120px;
   background-position: 0 20px;
   background-repeat: repeat;
+  min-height: 100vh;
 }
 
 /* #body::before {
@@ -47,16 +40,3 @@
 h2:hover{
   text-decoration: none;
 }
-
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */

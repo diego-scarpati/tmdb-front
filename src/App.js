@@ -20,9 +20,9 @@ import { getUserMovies } from "./store/userMovies";
 import { getUserTvs } from "./store/userTvs";
 
 const App = () => {
-
   const [movieList, setMovieList] = useState([]);
   const [tvList, setTvList] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,30 +31,40 @@ const App = () => {
       const tv = await getTv();
       await setMovieList(movies?.results);
       await setTvList(tv?.results);
-      dispatch(setUser())
+      dispatch(setUser());
       dispatch(setMovies());
       dispatch(setTv());
-      dispatch(setGeoInfo())
-      dispatch(getUserMovies())
-      dispatch(getUserTvs())
+      dispatch(setGeoInfo());
+      dispatch(getUserMovies());
+      dispatch(getUserTvs());
     };
     getData();
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMobile(window.innerWidth < 768);
+    });
+
+    return () => {
+      window.removeEventListener(
+        "resize",
+        setIsMobile(window.innerWidth < 768)
+      );
+    };
+  }, [isMobile]);
+
   return (
     <React.StrictMode>
       <Box minH="700px" id="body">
-        <Header />
+        <Header isMobile={isMobile} />
         <Routes>
           <Route
             path="/"
             element={
               <>
                 <SearchBar />
-                <Display
-                  movieList={movieList}
-                  tvList={tvList}
-                />
+                <Display movieList={movieList} tvList={tvList} />
               </>
             }
           />
@@ -63,14 +73,14 @@ const App = () => {
             element={
               <>
                 <SearchBar />
-                <Display
-                  movieList={movieList}
-                  tvList={tvList}
-                />
+                <Display movieList={movieList} tvList={tvList} />
               </>
             }
           />
-          <Route path="search/:type/:id/*" element={<Overview />} />
+          <Route
+            path="search/:type/:id/*"
+            element={<Overview isMobile={isMobile} />}
+          />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
           <Route path="404" element={<NotFound />} />
