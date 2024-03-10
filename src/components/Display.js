@@ -13,7 +13,39 @@ const Display = (props) => {
   const search = useSelector((state) => state.search);
   let { type } = useParams();
 
-  if (type === undefined) type = "movie";
+  // if (type === undefined) type = "movie";
+
+  if (search.results.length > 1 && type === undefined) {
+    return (
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        justifyContent="space-evenly"
+        // p="10px"
+        mx="50px"
+        mb="20px"
+      >
+        {search.results.map((item) => (
+          <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
+            {/* <Box
+              position="relative"
+              m="0px"
+              left="180px"
+              top="70px"
+              w="30px"
+              h="30px"
+              zIndex="1"
+            >
+              {userMovies.indexOf(item.id) === -1 ? <AddButton id={item.id} type={item.media_type} /> : <AddedButton id={item.id} type={item.media_type} />}
+            </Box> */}
+            <Link as={RouterLink} to={`/search/${item.media_type}/${item.id}`}>
+              <Card {...item} />
+            </Link>
+          </Box>
+        ))}
+      </Box>
+    );
+  }
 
   if (search.results.length > 1 && type === "movie") {
     return (
@@ -27,7 +59,7 @@ const Display = (props) => {
       >
         {search.results.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
-            <Box
+            {/* <Box
               position="relative"
               m="0px"
               left="180px"
@@ -37,7 +69,7 @@ const Display = (props) => {
               zIndex="1"
             >
               {userMovies.indexOf(item.id) === -1 ? <AddButton id={item.id} type={type} /> : <AddedButton id={item.id} type={type} />}
-            </Box>
+            </Box> */}
             <Link as={RouterLink} to={`/search/${type}/${item.id}`}>
               <Card {...item} />
             </Link>
@@ -59,7 +91,7 @@ const Display = (props) => {
       >
         {search.results.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
-            <Box
+            {/* <Box
               position="relative"
               m="0px"
               left="180px"
@@ -69,7 +101,7 @@ const Display = (props) => {
               zIndex="1"
             >
               {userTvs.indexOf(item.id) === -1 ? <AddButton id={item.id} type={type} /> : <AddedButton id={item.id} type={type} />}
-            </Box>
+            </Box> */}
             <Link as={RouterLink} to={`/search/${type}/${item.id}`}>
               <Card {...item} />
             </Link>
@@ -91,7 +123,7 @@ const Display = (props) => {
       >
         {props?.movieList?.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
-            <Box
+            {/* <Box
               position="relative"
               m="0px"
               left="180px"
@@ -101,7 +133,7 @@ const Display = (props) => {
               zIndex="1"
             >
               {userMovies.indexOf(item.id) === -1 ? <AddButton id={item.id} type={type} /> : <AddedButton id={item.id} type={type} />}
-            </Box>
+            </Box> */}
             <Link as={RouterLink} to={`/search/${type}/${item.id}`}>
               <Card {...item} />
             </Link>
@@ -123,7 +155,7 @@ const Display = (props) => {
       >
         {props?.tvList?.map((item) => (
           <Box key={item.id} _hover={{ transform: "scale(1.05)" }}>
-            <Box
+            {/* <Box
               position="relative"
               m="0px"
               left="180px"
@@ -134,7 +166,7 @@ const Display = (props) => {
               
             >
               {userTvs.indexOf(item.id) === -1 ? <AddButton id={item.id} type={type} /> : <AddedButton id={item.id} type={type} />}
-            </Box>
+            </Box> */}
             <Link as={RouterLink} to={`/search/${type}/${item.id}`}>
               <Card {...item} />
             </Link>

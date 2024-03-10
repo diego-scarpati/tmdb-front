@@ -72,7 +72,7 @@ const Header = ({ isMobile }) => {
               </Heading>
             </Link>
           </Box>
-          <Box
+          {/* <Box
             w="40%"
             display="flex"
             flexDirection="row"
@@ -126,8 +126,8 @@ const Header = ({ isMobile }) => {
             >
               Users
             </Button>
-          </Box>
-          <Box
+          </Box> */}
+          {/* <Box
             w="25%"
             display="flex"
             flexDirection="row"
@@ -135,7 +135,7 @@ const Header = ({ isMobile }) => {
             alignItems="center"
           >
             <MenuBtn />
-          </Box>
+          </Box> */}
         </Box>
       </>
     );

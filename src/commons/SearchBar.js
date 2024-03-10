@@ -6,15 +6,13 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { setSearch } from "../store/search";
 
 const SearchBar = () => {
-  let { type } = useParams();
   const [searchValue, setSearchValue] = useState([]);
   const dispatch = useDispatch();
-
-  if (!type) type = "movie";
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setSearch({ type, searchValue }));
+    dispatch(setSearch({ searchValue }));
     setSearchValue("");
   };
 

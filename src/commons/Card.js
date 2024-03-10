@@ -111,7 +111,7 @@ const Card = ({
         </Text>
       </Box>
       <CircularProgress
-        value={vote_average * 10}
+        value={vote_average ? vote_average * 10 : 0}
         color={voteColor}
         size="40px"
         display="unset"
@@ -123,7 +123,7 @@ const Card = ({
         border="0px"
       >
         <CircularProgressLabel fontWeight="bold" color="#003049">
-          {vote_average.toFixed(1)}
+          {vote_average ? vote_average.toFixed(1) : 0}
         </CircularProgressLabel>
       </CircularProgress>
     </Box>

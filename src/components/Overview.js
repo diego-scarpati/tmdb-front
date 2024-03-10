@@ -8,7 +8,6 @@ import Provider from "../commons/Provider";
 import popcornCardH from "../assets/popcornCardH.jpeg";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
-import AddButton from "../commons/AddButton";
 
 const Overview = ({ isMobile }) => {
   const { type } = useParams();
@@ -24,6 +23,7 @@ const Overview = ({ isMobile }) => {
 
   const navigationHandler = () => {
     navigate(`/search/${type}`);
+    // navigate();
   };
   const path = "https://image.tmdb.org/t/p";
 
@@ -92,9 +92,9 @@ const Overview = ({ isMobile }) => {
                     Over {selected.vote_count} votes.
                   </Text>
                 </Box>
-                <Box>
+                {/* <Box>
                   <AddButton />
-                </Box>
+                </Box> */}
               </Box>
               <Heading
                 as="h2"
@@ -210,9 +210,9 @@ const Overview = ({ isMobile }) => {
                     Over {selected.vote_count} votes.
                   </Text>
                 </Box>
-                <Box>
+                {/* <Box>
                   <AddButton />
-                </Box>
+                </Box> */}
               </Box>
               <Heading
                 as="h2"
