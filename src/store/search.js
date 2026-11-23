@@ -9,11 +9,10 @@ export const deleteSearchData = createAction("DELETE_SEARCHED_TMDB");
 
 export const setSearch = createAsyncThunk(
   "GET_SEARCHED_TMDB",
-  async (data, thunkAPI) => {
+  async (data) => {
     const { searchValue } = data;
-    const { geoInfo } = thunkAPI.getState();
     try {
-      const searchResult = await getSearch(searchValue, geoInfo.country_code);
+      const searchResult = await getSearch(searchValue);
       return searchResult;
     } catch (error) {
       console.log(error);

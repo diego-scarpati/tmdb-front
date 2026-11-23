@@ -20,14 +20,15 @@ const Card = ({
   vote_average,
   first_air_date,
   id,
+  media_type,
 }) => {
   const dispatch = useDispatch();
-  let type;
-  if (name) {
-    type = "tv";
-  } else {
-    type = "movie";
-  }
+  const type =
+    media_type === "movie" || media_type === "tv"
+      ? media_type
+      : name
+        ? "tv"
+        : "movie";
 
   const path = "https://image.tmdb.org/t/p/w342";
 
@@ -63,7 +64,7 @@ const Card = ({
       {poster_path ? (
         <Image
           src={`${path}${poster_path}`}
-          alt={name}
+          alt={name || title}
           objectFit="cover"
           w="185px"
           minH="278px"
@@ -75,7 +76,7 @@ const Card = ({
       ) : (
         <Image
           src={noImg}
-          alt={name}
+          alt={name || title}
           objectFit="cover"
           w="185px"
           minH="278px"

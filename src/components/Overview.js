@@ -15,6 +15,10 @@ const Overview = ({ isMobile }) => {
   const providers = useSelector((state) => state.providers);
   const country = useSelector((state) => state.geoInfo);
   const navigate = useNavigate();
+  const flatrateProviders =
+    providers?.[country?.country_code]?.flatrate || [];
+  const countryName =
+    country?.country_name || country?.country_code || "your region";
 
   let voteColor = "green.400";
   if (selected.vote_average < 6.5) voteColor = "yellow.400";
@@ -126,18 +130,21 @@ const Overview = ({ isMobile }) => {
                   Genres:{selected.genres.map((item) => " " + item.name)}
                 </Text>
                 <Box mt="5px" display="flex">
-                  {providers[country.country_code]?.flatrate !== undefined ? (
-                    providers[country.country_code]?.flatrate.map(
+                  {flatrateProviders.length > 0 ? (
+                    flatrateProviders.map(
                       (provider) => (
                         <Provider key={provider.provider_id} {...provider} />
                       )
                     )
                   ) : (
                     <Text fontWeight="medium">
-                      Not available for streaming in {country.country_name}
+                      No flat-rate streaming options listed for {countryName}.
                     </Text>
                   )}
                 </Box>
+                <Text fontSize="xs" mt="4px">
+                  Streaming availability data provided by JustWatch.
+                </Text>
               </Box>
             </Box>
         </Box>
@@ -244,18 +251,21 @@ const Overview = ({ isMobile }) => {
                   Genres:{selected.genres.map((item) => " " + item.name)}
                 </Text>
                 <Box mt="5px" display="flex">
-                  {providers[country.country_code]?.flatrate !== undefined ? (
-                    providers[country.country_code]?.flatrate.map(
+                  {flatrateProviders.length > 0 ? (
+                    flatrateProviders.map(
                       (provider) => (
                         <Provider key={provider.provider_id} {...provider} />
                       )
                     )
                   ) : (
                     <Text fontWeight="medium">
-                      Not available for streaming in {country.country_name}
+                      No flat-rate streaming options listed for {countryName}.
                     </Text>
                   )}
                 </Box>
+                <Text fontSize="xs" mt="4px">
+                  Streaming availability data provided by JustWatch.
+                </Text>
               </Box>
             </Box>
           </Box>
