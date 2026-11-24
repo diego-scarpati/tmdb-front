@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Box, Heading, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/progress";
@@ -10,10 +10,21 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 
 const Overview = ({ isMobile }) => {
-  const { type } = useParams();
   const selected = useSelector((state) => state.selected);
+  const { type: routeType } = useParams();
+  const type =
+    routeType === "movie" || routeType === "tv"
+      ? routeType
+      : selected?.media_type === "movie" || selected?.media_type === "tv"
+        ? selected.media_type
+        : selected?.name && !selected?.title
+          ? "tv"
+          : selected?.title && !selected?.name
+            ? "movie"
+            : null;
   const providers = useSelector((state) => state.providers);
   const country = useSelector((state) => state.geoInfo);
+  const location = useLocation();
   const navigate = useNavigate();
   const flatrateProviders =
     providers?.[country?.country_code]?.flatrate || [];
@@ -26,7 +37,17 @@ const Overview = ({ isMobile }) => {
   let cardName = selected.title ? selected.title : selected.name;
 
   const navigationHandler = () => {
-    navigate(`/search/${type}`);
+    const savedReturnTo = location.state?.returnTo;
+    const destination =
+      savedReturnTo === "/" ||
+      savedReturnTo === "/search/movie" ||
+      savedReturnTo === "/search/tv"
+        ? savedReturnTo
+        : type
+          ? `/search/${type}`
+          : "/";
+
+    navigate(destination, { replace: true });
   };
   const path = "https://image.tmdb.org/t/p";
 
