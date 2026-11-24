@@ -27,7 +27,6 @@ const Overview = ({ isMobile }) => {
 
   const navigationHandler = () => {
     navigate(`/search/${type}`);
-    // navigate();
   };
   const path = "https://image.tmdb.org/t/p";
 
@@ -96,9 +95,6 @@ const Overview = ({ isMobile }) => {
                     Over {selected.vote_count} votes.
                   </Text>
                 </Box>
-                {/* <Box>
-                  <AddButton />
-                </Box> */}
               </Box>
               <Heading
                 as="h2"
@@ -217,9 +213,6 @@ const Overview = ({ isMobile }) => {
                     Over {selected.vote_count} votes.
                   </Text>
                 </Box>
-                {/* <Box>
-                  <AddButton />
-                </Box> */}
               </Box>
               <Heading
                 as="h2"
